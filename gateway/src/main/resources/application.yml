@@ -10,3 +10,7 @@ spring:
           uri: https://blog.csdn.net
           predicates:
             - Path=/meteor_93
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10000/eureka/
