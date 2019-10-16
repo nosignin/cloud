@@ -1,5 +1,8 @@
 server:
   port: 10000 #服务注册中心端口号
+spring:
+  application:
+    name: eureka
 eureka:
   instance:
     hostname: 127.0.0.1 #服务注册中心IP地址
