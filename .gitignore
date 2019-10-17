@@ -1,4 +1,14 @@
-
+*.class
 *.cmd
-eureka/mvnw
 *.jar
+*.iml
+eureka/mvnw
+eureka/.idea/
+eureka/HELP.md
+eureka/target/
+eureka/.mvn/
+gateway/mvnw
+gateway/.idea/
+gateway/HELP.md
+gateway/target/
+gateway/.mvn/
