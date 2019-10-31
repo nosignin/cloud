@@ -1,6 +1,9 @@
 package com.example.rabbitmq.web;
 
+import com.example.rabbitmq.entity.RabbitHeaderMessage;
 import com.example.rabbitmq.entity.RabbitMessage;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -16,16 +19,46 @@ public class RabbitController {
     private RabbitTemplate rabbitTemplate;
 
     /**
-     * 访问localhost:8080/rabbit/send得到访问结果
+     * 访问localhost:8080/rabbit/test/exchange得到访问结果
      * @param rabbitMessage
      * @return
      */
-    @PostMapping("/send")
-    public Object send(@RequestBody RabbitMessage rabbitMessage){
+    @PostMapping("/test/exchange")
+    public Object testExchange(@RequestBody RabbitMessage rabbitMessage){
         String myDirectExchange = rabbitMessage.getMyDirectExchange();
         String routingKey = rabbitMessage.getRoutingKey();
         String message = rabbitMessage.getMessage();
         rabbitTemplate.convertAndSend(myDirectExchange, routingKey, message);
-        return "消息发送成功";
+        return message;
     }
+
+    /**
+     * 访问localhost:8080/rabbit/test/exchange得到访问结果
+     * @param rabbitMessage
+     * @return
+     */
+    @PostMapping("/test/default/exchange")
+    public Object testDefaultExchange(@RequestBody RabbitMessage rabbitMessage){
+        String routingKey = rabbitMessage.getRoutingKey();
+        String message = rabbitMessage.getMessage();
+        rabbitTemplate.convertAndSend( routingKey, message);
+        return message;
+    }
+
+    /**
+     * 访问localhost:8080/rabbit/test/header/exchange得到访问结果
+     * @param rabbitHeaderMessage
+     * @return
+     */
+    @PostMapping("/test/header/exchange")
+    public Object testHeaderExchange(@RequestBody RabbitHeaderMessage rabbitHeaderMessage){
+        String myDirectExchange = rabbitHeaderMessage.getMyDirectExchange();
+        String routingKey = rabbitHeaderMessage.getRoutingKey();
+        MessageProperties messageProperties = new MessageProperties();
+        messageProperties.setHeader("key-one", "1");
+        Message message = new Message("hello".getBytes(), messageProperties);
+        rabbitTemplate.convertAndSend(myDirectExchange, routingKey, message);
+        return message;
+    }
+
 }

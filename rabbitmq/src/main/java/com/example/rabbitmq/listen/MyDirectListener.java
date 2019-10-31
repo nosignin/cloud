@@ -6,6 +6,9 @@ import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+/**
+ * Direct Exchange:进入key完全匹配的队列
+ */
 @Component
 @RabbitListener(bindings = @QueueBinding(
         value = @Queue("myDirectQueue"),
