@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class RabbitMessage {
-    String myDirectExchange;
-    String routingKey;
-    String message;
+    String myDirectExchange="myDirectExchange";
+    String routingKey="mine.direct";
+    String message="this is a message";
 }

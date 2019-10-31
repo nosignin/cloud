@@ -1,5 +1,6 @@
 package com.example.rabbitmq.listen;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
         exchange = @Exchange(value = "myDirectExchange", type = ExchangeTypes.DIRECT),
         key = "mine.direct"
 ))
+@Slf4j
 public class MyDirectListener {
     /**
      * listenerAdapter
@@ -19,6 +21,6 @@ public class MyDirectListener {
      */
     @RabbitHandler
     public void onMessage(@Payload String msg) {
-        System.out.println(msg);
+        log.info(">>> 监听到mq消息: {}  <<<",msg);
     }
 }
