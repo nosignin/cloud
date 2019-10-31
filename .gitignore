@@ -32,3 +32,8 @@ dubbo-provider/.idea/
 dubbo-provider/HELP.md
 dubbo-provider/target/
 dubbo-provider/.mvn/
+rabbitmq/mvnw
+rabbitmq/.idea/
+rabbitmq/HELP.md
+rabbitmq/target/
+rabbitmq/.mvn/
