@@ -2,6 +2,7 @@ package com.example.rabbitmq.web;
 
 import com.example.rabbitmq.entity.RabbitHeaderMessage;
 import com.example.rabbitmq.entity.RabbitMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/rabbit")
 @RestController
+@Slf4j
 public class RabbitController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -25,6 +27,7 @@ public class RabbitController {
      */
     @PostMapping("/test/exchange")
     public Object testExchange(@RequestBody RabbitMessage rabbitMessage){
+        log.info(">>> 进入到MDC log方法 <<<");
         String myDirectExchange = rabbitMessage.getMyDirectExchange();
         String routingKey = rabbitMessage.getRoutingKey();
         String message = rabbitMessage.getMessage();
