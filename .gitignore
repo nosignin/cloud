@@ -47,3 +47,8 @@ zuul-client/.idea/
 zuul-client/HELP.md
 zuul-client/target/
 zuul-client/.mvn/
+redis/mvnw
+redis/.idea/
+redis/HELP.md
+redis/target/
+redis/.mvn/
