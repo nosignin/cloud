@@ -37,3 +37,13 @@ rabbitmq/.idea/
 rabbitmq/HELP.md
 rabbitmq/target/
 rabbitmq/.mvn/
+zuul-server/mvnw
+zuul-server/.idea/
+zuul-server/HELP.md
+zuul-server/target/
+zuul-server/.mvn/
+zuul-client/mvnw
+zuul-client/.idea/
+zuul-client/HELP.md
+zuul-client/target/
+zuul-client/.mvn/
