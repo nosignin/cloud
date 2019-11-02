@@ -52,3 +52,8 @@ redis/.idea/
 redis/HELP.md
 redis/target/
 redis/.mvn/
+elastic-job/mvnw
+elastic-job/.idea/
+elastic-job/HELP.md
+elastic-job/target/
+elastic-job/.mvn/
