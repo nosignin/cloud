@@ -1,8 +1,12 @@
 package com.example.redis.web;
 
+import com.example.redis.annotation.CheckRecommendStockParamAnnotation;
+import com.example.redis.entity.RecommendStock;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +33,16 @@ public class TestController {
             redisTemplate.expire(key,1L, TimeUnit.MINUTES);
         }
         return "设置数据:"+(aBoolean.equals(true)?"成功":"失败");
+    }
+
+    /**
+     * 推荐股票
+     * @return
+     */
+    @PostMapping("/launch/recommend/stock")
+    @CheckRecommendStockParamAnnotation(checkMinRise = true,checkMaxRise = true,
+            checkMinPay = true,checkMaxPay = true,checkOnGoingAmount = true,checkIdExist = true,checkUserIdExist = true)
+    public Object launchRecommendStock(@RequestBody RecommendStock recommendStock){
+        return "发布成功";
     }
 }
