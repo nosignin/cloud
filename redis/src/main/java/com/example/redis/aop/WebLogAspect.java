@@ -15,6 +15,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 @Aspect
 @Component
@@ -42,18 +44,19 @@ public class WebLogAspect {
 //        接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-//        记录下请求内容
-        log.info(">>> URL: {},HTTP_METHOD: {},类: {},方法: {} <<<",request.getRequestURL().toString(),request.getMethod()
-                ,joinPoint.getTarget().getClass().getName(),joinPoint.getSignature().getName());
         if("application/json".equals(request.getHeader("content-Type"))){
             Object[] args = joinPoint.getArgs();
-            log.info(">>> 请求参数: {} <<<", JSON.toJSONString(args));
+            log.info(">>> URL: {} ,类: {},方法: {},请求参数: {}  <<<",request.getRequestURL().toString(),
+                    joinPoint.getTarget().getClass().getName(),joinPoint.getSignature().getName(),JSON.toJSONString(args[0]));
         }else {
             Enumeration<String> enu = request.getParameterNames();
+            Map<String, String> map = new HashMap<>();
             while(enu.hasMoreElements()){
                 String name = enu.nextElement();
-                log.info(">>> 请求参数名: {},对应的值: {} <<<",name,request.getParameter(name));
+                map.put(name,request.getParameter(name));
             }
+            log.info(">>> URL: {} ,类: {},方法: {},请求参数: {} <<<",request.getRequestURL().toString(),
+                    joinPoint.getTarget().getClass().getName(),joinPoint.getSignature().getName(),JSON.toJSONString(map));
         }
     }
 
@@ -62,9 +65,12 @@ public class WebLogAspect {
     AfterReturning配置必须有argNames参数，且参数值和returning值一样，这样在织入代码里面便可通过returning的值获取被织入函数的返回值。
      */
     @AfterReturning(returning = "result",pointcut ="pointCut()" )
-    public void after(Object result){
+    public void after(JoinPoint joinPoint,Object result){
 //        处理完请求，返回内容
-        log.info(">>> RESPONSE: {} <<<",JSON.toJSONString(result));
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        log.info(">>> URL: {} ,类: {},方法: {},响应报文: {} <<<",request.getRequestURL().toString(),
+                joinPoint.getTarget().getClass().getName(),joinPoint.getSignature().getName(),JSON.toJSONString(result));
     }
 
     /**
