@@ -46,8 +46,13 @@ public class WebLogAspect {
         HttpServletRequest request = attributes.getRequest();
         if("application/json".equals(request.getHeader("content-Type"))){
             Object[] args = joinPoint.getArgs();
-            log.info(">>> URL: {} ,类: {},方法: {},请求参数: {}  <<<",request.getRequestURL().toString(),
-                    joinPoint.getTarget().getClass().getName(),joinPoint.getSignature().getName(),JSON.toJSONString(args[0]));
+            if(args != null && args.length>0){
+                log.info(">>> URL: {} ,类: {},方法: {},请求参数: {}  <<<",request.getRequestURL().toString(),
+                        joinPoint.getTarget().getClass().getName(),joinPoint.getSignature().getName(),JSON.toJSONString(args[0]));
+            }else{
+                log.info(">>> URL: {} ,类: {},方法: {},请求参数: {}  <<<",request.getRequestURL().toString(),
+                        joinPoint.getTarget().getClass().getName(),joinPoint.getSignature().getName(),null);
+            }
         }else {
             Enumeration<String> enu = request.getParameterNames();
             Map<String, String> map = new HashMap<>();
@@ -79,24 +84,13 @@ public class WebLogAspect {
      * @return
      */
     @Around("pointCut()")
-    public Object around(ProceedingJoinPoint joinPoint){
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
         Object resultData = null;
         Object[] args = joinPoint.getArgs();
-        try {
-            resultData = joinPoint.proceed(args);
-            long endTime = System.currentTimeMillis();
-            log.info(">>> 请求接口耗时: {} ms <<<",(endTime-startTime));
-            return new CommHttpResult("success",resultData);
-        } catch (Throwable throwable) {
-            long endTime = System.currentTimeMillis();
-            log.error(">>> 请求接口出现异常! 耗时: {} ms <<<",(endTime-startTime));
-            log.error(">>> {} <<<",throwable.getMessage());
-            if(throwable instanceof BaseException){
-                return new CommHttpResult("fail",throwable.getMessage());
-            }else {
-                return new CommHttpResult("fail", ResultEnum.SYSTEM_ERROR.message);
-            }
-        }
+        resultData = joinPoint.proceed(args);
+        long endTime = System.currentTimeMillis();
+        log.info(">>> 请求接口耗时: {} ms <<<",(endTime-startTime));
+        return resultData;
     }
 }

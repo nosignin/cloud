@@ -1,5 +1,7 @@
 package com.example.redis.clazz;
 
+import com.example.redis.chain.Student;
+
 import java.util.List;
 
 /**
@@ -9,7 +11,7 @@ public class TestClass {
     public static void main(String[] args) {
         TestClass test = new TestClass();
         Object object = new Object();
-        List<String> transfer1 = test.transfer1(object,String.class);
+        List<Student> transfer1 = test.transfer1(object, Student.class);
         List<String> transfer2 = test.transfer2(object,new String());
     }
 
