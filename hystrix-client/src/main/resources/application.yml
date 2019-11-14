@@ -1,0 +1,24 @@
+server:
+  # 使用0而不是${random.int[10000,19999]}作为动态端口,后者会导致eureka和本地的端口不对,调用微服务失效
+  # 动态端口
+  port: 0
+spring:
+  application:
+    name: hystrix-client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10000/eureka/
+      #    自定义应用id
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+# 配置hystrix的参数
+hystrix:
+  threadpool:
+    # 默认参数，作用的所有的hystrix的客户端
+    default:
+      coreSize: 10
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000

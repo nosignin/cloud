@@ -57,3 +57,13 @@ elastic-job/.idea/
 elastic-job/HELP.md
 elastic-job/target/
 elastic-job/.mvn/
+hystrix-client/mvnw
+hystrix-client/.idea/
+hystrix-client/HELP.md
+hystrix-client/target/
+hystrix-client/.mvn/
+hystrix-server/mvnw
+hystrix-server/.idea/
+hystrix-server/HELP.md
+hystrix-server/target/
+hystrix-server/.mvn/
