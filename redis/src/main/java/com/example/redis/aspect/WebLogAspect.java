@@ -1,9 +1,6 @@
-package com.example.redis.aop;
+package com.example.redis.aspect;
 
 import com.alibaba.fastjson.JSON;
-import com.example.redis.entity.CommHttpResult;
-import com.example.redis.enums.ResultEnum;
-import com.example.redis.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

@@ -1,24 +1,18 @@
-package com.example.redis.aop;
+package com.example.redis.aspect;
 
 import com.example.redis.annotation.CheckRecommendStockParamAnnotation;
-import com.example.redis.entity.CommHttpResult;
-import com.example.redis.entity.Dictionary;
 import com.example.redis.entity.RecommendStock;
 import com.example.redis.enums.ResultEnum;
 import com.example.redis.exception.BaseException;
-import com.example.redis.mapper.DictionaryMapper;
 import com.example.redis.service.DictionaryService;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.math.BigDecimal;
 
 /**
