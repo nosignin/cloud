@@ -67,3 +67,8 @@ hystrix-server/.idea/
 hystrix-server/HELP.md
 hystrix-server/target/
 hystrix-server/.mvn/
+springsecurity/mvnw
+springsecurity/.idea/
+springsecurity/HELP.md
+springsecurity/target/
+springsecurity/.mvn/
