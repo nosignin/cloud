@@ -22,16 +22,32 @@ import org.springframework.stereotype.Service;
  * UserDetails：构建Authentication对象必须的信息，可以自定义，可能需要访问DB得到
  * UserDetailsService：通过username构建UserDetails对象，通过loadUserByUsername
  * 根据userName获取UserDetail对象 （可以在这里基于自身业务进行自定义的实现  如通过数据库，xml,缓存获取等）
+ *
+ * springsecurity主要过滤器
+ * WebAsyncManagerIntegrationFilter
+ * SecurityContextPersistenceFilter
+ * HeaderWriterFilter
+ * CorsFilter
+ * LogoutFilter
+ * RequestCacheAwareFilter
+ * SecurityContextHolderAwareRequestFilter
+ * AnonymousAuthenticationFilter
+ * SessionManagementFilter
+ * ExceptionTranslationFilter
+ * FilterSecurityInterceptor
+ * UsernamePasswordAuthenticationFilter
+ * BasicAuthenticationFilter
  */
 @Service
 @Slf4j
-public class MyUserDetailService implements UserDetailsService {// UserDetailsService 我的理解是用户关系的来源，可以自定义数据源
+public class UserDetailServiceImpl implements UserDetailsService {// UserDetailsService 我的理解是用户关系的来源，可以自定义数据源
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 在当前的业务中，用户所有的密码都被设置成123456，访问其他页面后会自动跳转到登录页面，
         // 任意输入一个用户名比如aaa，输入密码123456，即可正确登录，然后跳转到之前想进入的页面
-        return new User(username,passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("admin,user"));
+        // 我们MyUserDetailService 返回的权限角色集合一定要加ROLE_
+        return new User(username,passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN,read"));
     }
 }
