@@ -72,3 +72,8 @@ springsecurity/.idea/
 springsecurity/HELP.md
 springsecurity/target/
 springsecurity/.mvn/
+springsecurity-oauth2/mvnw
+springsecurity-oauth2/.idea/
+springsecurity-oauth2/HELP.md
+springsecurity-oauth2/target/
+springsecurity-oauth2/.mvn/
