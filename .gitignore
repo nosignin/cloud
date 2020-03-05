@@ -87,3 +87,8 @@ demo/.idea/
 demo/HELP.md
 demo/target/
 demo/.mvn/
+feign/mvnw
+feign/.idea/
+feign/HELP.md
+feign/target/
+feign/.mvn/
