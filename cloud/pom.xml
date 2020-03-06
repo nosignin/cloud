@@ -23,6 +23,9 @@
     <modules>
         <module>../demo</module>
         <module>../ribbon</module>
+        <module>../feign</module>
+        <module>../zipkin-a</module>
+        <module>../zipkin-b</module>
     </modules>
 
     <properties>

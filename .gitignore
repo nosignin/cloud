@@ -92,3 +92,13 @@ feign/.idea/
 feign/HELP.md
 feign/target/
 feign/.mvn/
+zipkin-a/mvnw
+zipkin-a/.idea/
+zipkin-a/HELP.md
+zipkin-a/target/
+zipkin-a/.mvn/
+zipkin-b/mvnw
+zipkin-b/.idea/
+zipkin-b/HELP.md
+zipkin-b/target/
+zipkin-b/.mvn/
