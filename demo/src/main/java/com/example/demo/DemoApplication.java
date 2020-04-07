@@ -22,6 +22,6 @@ public class DemoApplication {
 
 	@RequestMapping("/hi")
 	public String home(@RequestParam(value = "name",defaultValue = "shijia")String name){
-		return "hi "+name+" ,i am from prot: "+port;
+		return "hi "+name+" ,i am from port: "+port;
 	}
 }
