@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 public class GeneratorQuickDevelop {
 
     public static void main(String[] args) throws Exception{
-        String url = "jdbc:mysql://localhost:3306/bit_shield_currency?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai";
+        String url = "jdbc:mysql://localhost:3306/bit_shield_currency?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false";
         String username = "root";
         String password = "123456";
 //        文件输出路径

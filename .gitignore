@@ -103,3 +103,9 @@ zipkin-b/HELP.md
 zipkin-b/target/
 zipkin-b/.mvn/
 cloud/.idea/
+mybatis-plus/mvnw
+mybatis-plus/.idea/
+mybatis-plus/HELP.md
+mybatis-plus/target/
+mybatis-plus/.mvn/
+mybatis-plus/.gitignore

@@ -31,6 +31,7 @@
         <module>../redis</module>
         <module>../feign</module>
         <module>../gateway</module>
+        <module>../mybatis-plus</module>
         <module>../ribbon</module>
         <module>../springsecurity</module>
         <module>../springsecurity-oauth2</module>

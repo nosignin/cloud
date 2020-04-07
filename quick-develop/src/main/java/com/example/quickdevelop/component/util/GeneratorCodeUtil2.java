@@ -38,7 +38,7 @@ public class GeneratorCodeUtil2 {
     private static Connection connection = null;
 
     public static void init(String dbName,String GENERATOR_BASE_PATH) throws Exception{
-        String url = "jdbc:mysql://127.0.0.1:3306/"+dbName+"?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai";
+        String url = "jdbc:mysql://127.0.0.1:3306/"+dbName+"?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false";
         Class.forName(DRIVER_CLASS_NAME);
         connection= DriverManager.getConnection(url, USERNAME, PASSWORD);
         generatorBasePath = GENERATOR_BASE_PATH;
