@@ -7,7 +7,9 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -22,6 +24,8 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 * @Description: oauth2的资源服务器和授权服务器的配置
  * 参考：http://blog.didispace.com/spring-security-oauth2-xjf-1/
  * https://github.com/lexburner/oauth2-demo
+ * https://blog.csdn.net/AaronSimon/article/details/83546827
+ * https://github.com/simondongji/SpringCloudProject
 * @Param:
 * @return:
 * @Author: 石佳
@@ -42,23 +46,23 @@ public class OAuth2ServerConfig {
     * @Author: 石佳
     * @Date: 2020/4/17
     */
-    @Configuration
-    @EnableResourceServer
-    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-
-        @Override
-        public void configure(ResourceServerSecurityConfigurer resources) {
-            resources.resourceId(DEMO_RESOURCE_ID).stateless(true);
-        }
-
-        @Override
-        public void configure(HttpSecurity http) throws Exception {
-            http
-                .authorizeRequests()
-                    .antMatchers("/order/**").authenticated();//配置order访问控制，必须认证过后才可以访问
-
-        }
-    }
+//    @Configuration
+//    @EnableResourceServer
+//    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+//
+//        @Override
+//        public void configure(ResourceServerSecurityConfigurer resources) {
+//            resources.resourceId(DEMO_RESOURCE_ID).stateless(true);
+//        }
+//
+//        @Override
+//        public void configure(HttpSecurity http) throws Exception {
+//            http
+//                .authorizeRequests()
+//                    .antMatchers("/order/**").authenticated();//配置order访问控制，必须认证过后才可以访问
+//
+//        }
+//    }
 
     /**
     * @Description: 授权服务器主要是提供用户认证、授权、颁发令牌等功能
@@ -68,6 +72,12 @@ public class OAuth2ServerConfig {
      * 		参数：grant_type=client_credentials& scope=select& client_id=client_1& client_secret=123456
      * 	密码模式
      * 		参数：username=user_1&password=123456& grant_type=password&scope=select& client_id=client_2&client_secret=123456
+     * 	授权码模式
+     * 	    先登录，post请求到http://localhost:8080/login，form表单提交，参数是username=user_1&password=123456
+     * 	    登录完会触发302跳转到http://localhost:8080/oauth/authorize?response_type=code&client_id=client1&redirect_uri=http://baidu.com
+     * 	    在页面选择允许，确认后触发302跳转到https://www.baidu.com/?code=pyhAqn
+     * 	    得到了code之后post请求到http://localhost:8080/oauth/token，form表单提交，参数是grant_type=authorization_code&client_id=client1&client_secret=123456&code=pyhAqn&redirect_uri=http://baidu.com
+     * 	    得到了我们的token：{"access_token":"6d6bed5f-d6ca-4b65-959c-10105a42f05f","token_type":"bearer","refresh_token":"2ecc242d-a753-4ffa-98ea-a80b22aa3196","expires_in":43199,"scope":"test"}
      * 访问资源
      * 	http://localhost:8080/order/1?access_token=2a62d637-38dc-4d56-8ef6-da80b515b5cb
     * @Param: 
@@ -106,21 +116,30 @@ public class OAuth2ServerConfig {
                     .authorizedGrantTypes("password", "refresh_token")
                     .scopes("select")
                     .authorities("oauth2")
-                    .secret(finalSecret);
+                    .secret(finalSecret)
+                    .and().withClient("client1")//用于标识用户ID
+                    .authorizedGrantTypes("authorization_code","client_credentials","password","implicit","refresh_token")//授权方式
+                    .scopes("test")//授权范围
+                    .secret(finalSecret)
+                    .redirectUris("http://baidu.com");
         }
+
+        @Autowired
+        private UserDetailsService userDetailsService;
 
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
             endpoints
-                    .tokenStore(new RedisTokenStore(redisConnectionFactory))
                     .authenticationManager(authenticationManager)
+                    .tokenStore(new RedisTokenStore(redisConnectionFactory))
+                    .userDetailsService(userDetailsService)
                     .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
         }
 
         @Override
         public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
             //允许表单认证
-            oauthServer.allowFormAuthenticationForClients();
+            oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()").allowFormAuthenticationForClients();
         }
 
     }

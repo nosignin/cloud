@@ -4,6 +4,7 @@ package com.example.springsecurityoauth2.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -54,6 +55,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      *
      */
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //不拦截 oauth 开放的资源
+        http.csrf().disable();
+
+        http.requestMatchers()//使HttpSecurity接收以"/login/","/oauth/"开头请求。
+                .antMatchers("/oauth/**", "/login/**", "/logout/**")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/oauth/**").authenticated()
+                .and()
+                .formLogin();
+    }
 
     // password 方案一：明文存储，用于测试，不能用于生产
 //    @Bean
@@ -68,10 +82,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //    }
 
     // password 方案三：支持多种编码，通过密码的前缀区分编码方式,推荐
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
+//    @Bean
+//    PasswordEncoder passwordEncoder(){
+//        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//    }
 
 //
 //    /**
@@ -84,14 +98,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return manager;
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // @formatter:off
-        http
-            .requestMatchers().anyRequest()
-            .and()
-                .authorizeRequests()
-                .antMatchers("/oauth/**").permitAll();
-        // @formatter:on
-    }
 }
