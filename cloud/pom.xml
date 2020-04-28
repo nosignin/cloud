@@ -22,6 +22,7 @@
 
     <modules>
         <module>../demo</module>
+        <module>../dataway</module>
         <module>../dubbo-api</module>
         <module>../dubbo-consumer</module>
         <module>../dubbo-provider</module>

@@ -109,3 +109,9 @@ mybatis-plus/HELP.md
 mybatis-plus/target/
 mybatis-plus/.mvn/
 mybatis-plus/.gitignore
+dataaway/mvnw
+dataaway/.idea/
+dataaway/HELP.md
+dataaway/target/
+dataaway/.mvn/
+dataaway/.gitignore
