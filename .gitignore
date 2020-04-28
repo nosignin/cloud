@@ -115,3 +115,5 @@ dataaway/HELP.md
 dataaway/target/
 dataaway/.mvn/
 dataaway/.gitignore
+dataway/target/classes/application.properties
+dataway/target/classes/sql/init.sql
