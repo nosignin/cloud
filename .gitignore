@@ -117,3 +117,8 @@ dataaway/.mvn/
 dataaway/.gitignore
 dataway/target/classes/application.properties
 dataway/target/classes/sql/init.sql
+springsecurity-oauth2-demo/mvnw
+springsecurity-oauth2-demo/.idea/
+springsecurity-oauth2-demo/HELP.md
+springsecurity-oauth2-demo/target/
+springsecurity-oauth2-demo/.mvn/

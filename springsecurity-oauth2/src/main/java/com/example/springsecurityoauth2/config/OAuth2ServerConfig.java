@@ -2,6 +2,7 @@ package com.example.springsecurityoauth2.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
@@ -18,6 +19,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 /**
@@ -34,7 +37,7 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 @Configuration
 public class OAuth2ServerConfig {
 
-    private static final String DEMO_RESOURCE_ID = "order";
+//    private static final String DEMO_RESOURCE_ID = "order";
 
     /**
     * @Description: 用户从授权服务器获取令牌，
@@ -91,8 +94,8 @@ public class OAuth2ServerConfig {
 
         @Autowired
         AuthenticationManager authenticationManager;
-        @Autowired
-        RedisConnectionFactory redisConnectionFactory;
+//        @Autowired
+//        RedisConnectionFactory redisConnectionFactory;
 
 
         @Override
@@ -105,19 +108,21 @@ public class OAuth2ServerConfig {
             // password 方案三：支持多种编码，通过密码的前缀区分编码方式
             String finalSecret = "{bcrypt}"+new BCryptPasswordEncoder().encode("123456");
             //配置两个客户端,一个用于password认证一个用于client认证
-            clients.inMemory().withClient("client_1")
-                    .resourceIds(DEMO_RESOURCE_ID)
-                    .authorizedGrantTypes("client_credentials", "refresh_token")
-                    .scopes("select")
-                    .authorities("oauth2")
-                    .secret(finalSecret)
-                    .and().withClient("client_2")
-                    .resourceIds(DEMO_RESOURCE_ID)
-                    .authorizedGrantTypes("password", "refresh_token")
-                    .scopes("select")
-                    .authorities("oauth2")
-                    .secret(finalSecret)
-                    .and().withClient("client1")//用于标识用户ID
+            clients.inMemory()
+//                    .withClient("client_1")
+//                    .resourceIds(DEMO_RESOURCE_ID)
+//                    .authorizedGrantTypes("client_credentials", "refresh_token")
+//                    .scopes("select")
+//                    .authorities("oauth2")
+//                    .secret(finalSecret)
+//                    .and().withClient("client_2")
+//                    .resourceIds(DEMO_RESOURCE_ID)
+//                    .authorizedGrantTypes("password", "refresh_token")
+//                    .scopes("select")
+//                    .authorities("oauth2")
+//                    .secret(finalSecret)
+//                    .and()
+                    .withClient("client1")//用于标识用户ID
                     .authorizedGrantTypes("authorization_code","client_credentials","password","implicit","refresh_token")//授权方式
                     .scopes("test")//授权范围
                     .secret(finalSecret)
@@ -131,9 +136,16 @@ public class OAuth2ServerConfig {
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
             endpoints
                     .authenticationManager(authenticationManager)
-                    .tokenStore(new RedisTokenStore(redisConnectionFactory))
-                    .userDetailsService(userDetailsService)
-                    .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
+//                    .tokenStore(new RedisTokenStore(redisConnectionFactory))
+                    .tokenStore(memoryTokenStore())
+                    .userDetailsService(userDetailsService);
+//                    .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
+        }
+
+        // 使用最基本的InMemoryTokenStore生成token
+        @Bean
+        public TokenStore memoryTokenStore() {
+            return new InMemoryTokenStore();
         }
 
         @Override
