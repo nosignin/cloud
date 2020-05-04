@@ -40,6 +40,7 @@
         <module>../zipkin-b</module>
         <module>../zuul-client</module>
         <module>../zuul-server</module>
+        <module>../mine</module>
     </modules>
 
     <properties>

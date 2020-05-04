@@ -52,7 +52,13 @@
 			<artifactId>elastic-job-lite-spring</artifactId>
 			<version>${elastic-job.version}</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

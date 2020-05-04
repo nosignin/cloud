@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: service1
+server:
+  port: 0
+  servlet:
+    context-path: /service1
