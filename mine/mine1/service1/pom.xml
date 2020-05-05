@@ -14,15 +14,8 @@
         <module>service1-controller</module>
         <module>service1-dao</module>
         <module>service1-entity</module>
-        <module>service1-spi</module>
     </modules>
 
     <artifactId>service1</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>com.alibaba.spring.boot</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>
