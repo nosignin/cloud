@@ -41,6 +41,7 @@
         <module>../zuul-client</module>
         <module>../zuul-server</module>
         <module>../mine</module>
+        <module>nacos</module>
     </modules>
 
     <properties>
@@ -86,6 +87,13 @@
                 <groupId>com.101tec</groupId>
                 <artifactId>zkclient</artifactId>
                 <version>0.11</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>0.2.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
