@@ -152,3 +152,13 @@ mine/mine1/util/.idea/
 mine/mine1/util/HELP.md
 mine/mine1/util/target/
 mine/mine1/util/.mvn/
+cloud/nacos/alibaba-nacos-discovery-client-common/mvnw
+cloud/nacos/alibaba-nacos-discovery-client-common/.idea/
+cloud/nacos/alibaba-nacos-discovery-client-common/HELP.md
+cloud/nacos/alibaba-nacos-discovery-client-common/target/
+cloud/nacos/alibaba-nacos-discovery-client-common/.mvn/
+cloud/nacos/alibaba-nacos-discovery-server/mvnw
+cloud/nacos/alibaba-nacos-discovery-server/.idea/
+cloud/nacos/alibaba-nacos-discovery-server/HELP.md
+cloud/nacos/alibaba-nacos-discovery-server/target/
+cloud/nacos/alibaba-nacos-discovery-server/.mvn/
