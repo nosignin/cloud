@@ -42,6 +42,8 @@
         <module>../zuul-server</module>
         <module>../mine</module>
         <module>nacos</module>
+        <module>dubbo</module>
+        <module>dubbo-simple</module>
     </modules>
 
     <properties>
