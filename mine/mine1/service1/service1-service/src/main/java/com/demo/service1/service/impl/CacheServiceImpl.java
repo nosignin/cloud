@@ -11,7 +11,6 @@ import com.demo.service1.entity.User;
 import com.demo.service1.service.CacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import java.util.List;
 public class CacheServiceImpl implements CacheService {
     @Cacheable(cacheNames = "service1:cache:users",key="'马'")
     @Override
-    public List<com.demo.service1.entity.User> users() throws InterruptedException {
+    public List<User> users() throws InterruptedException {
         log.debug(">>> 未使用缓存，查询速度较慢 <<<");
         Thread.sleep(3000L);
         List<User> users = new ArrayList<>();

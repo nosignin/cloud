@@ -14,6 +14,9 @@
         <module>service1-controller</module>
         <module>service1-dao</module>
         <module>service1-entity</module>
+        <module>service1-runtime</module>
+        <module>service1-spi</module>
+        <module>service1-reference</module>
     </modules>
 
     <artifactId>service1</artifactId>

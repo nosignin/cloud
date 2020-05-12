@@ -9,14 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service1-service</artifactId>
+    <artifactId>service1-spi</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>service1-spi</artifactId>
+            <artifactId>service1-entity</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
 </project>

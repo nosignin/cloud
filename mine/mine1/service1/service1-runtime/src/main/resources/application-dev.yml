@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: service1
+server:
+  port: 0
+  servlet:
+    context-path: /service1
+logging:
+  level:
+    com.demo.service1.controller: ERROR
+    com.demo.service1.service: DEBUG
