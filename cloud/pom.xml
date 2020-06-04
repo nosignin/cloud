@@ -44,6 +44,7 @@
         <module>nacos</module>
         <module>dubbo</module>
         <module>dubbo-simple</module>
+        <module>mysql-proxy</module>
     </modules>
 
     <properties>
