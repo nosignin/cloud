@@ -238,3 +238,4 @@ mine/mine1/service1/service1-dao/HELP.md
 mine/mine1/service1/service1-dao/target/
 mine/mine1/service1/service1-dao/.mvn/
 cloud/mysql-proxy/target/
+cloud/canal/target
