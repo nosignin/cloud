@@ -46,6 +46,7 @@
         <module>dubbo-simple</module>
         <module>mysql-proxy</module>
         <module>canal</module>
+        <module>kafka</module>
     </modules>
 
     <properties>
