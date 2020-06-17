@@ -29,7 +29,6 @@
         <module>../elastic-job</module>
         <module>../eureka</module>
         <module>../rabbitmq</module>
-        <module>../redis</module>
         <module>../feign</module>
         <module>../gateway</module>
         <module>../mybatis-plus</module>
@@ -41,6 +40,7 @@
         <module>../zuul-client</module>
         <module>../zuul-server</module>
         <module>../mine</module>
+        <module>../mine2</module>
         <module>nacos</module>
         <module>dubbo</module>
         <module>dubbo-simple</module>
