@@ -240,3 +240,4 @@ mine/mine1/service1/service1-dao/.mvn/
 cloud/mysql-proxy/target/
 cloud/canal/target
 cloud/kafka/target
+cloud/redis-jedis/target
