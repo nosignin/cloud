@@ -6,6 +6,8 @@ import redis.clients.jedis.Jedis;
 import java.util.Collections;
 
 /**
+ * 参考：Redis 分布式锁的正确实现方式
+ * https://segmentfault.com/a/1190000020631732
  * @author 石佳
  * @since 2020/06/19
  */
