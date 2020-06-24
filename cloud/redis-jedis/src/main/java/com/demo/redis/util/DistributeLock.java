@@ -60,7 +60,7 @@ public class DistributeLock {
      *  执行分布式锁的方法
      * @param key 锁
      * @param requestId 请求标识
-     * @param expireTime 锁的过期时间
+     * @param expireTime 锁的过期时间,单位：毫秒
      * @author 石佳
      * @since 2020/6/22
      */

@@ -47,7 +47,8 @@
         <module>mysql-proxy</module>
         <module>canal</module>
         <module>kafka</module>
-        <module>redis</module>
+        <module>redis-jedis</module>
+        <module>redis-redistemplate</module>
     </modules>
 
     <properties>
