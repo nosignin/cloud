@@ -243,3 +243,4 @@ cloud/kafka/target/
 cloud/redis-jedis/target/
 cloud/redis-redistemplate/target/
 cloud/elasticsearch/target/
+cloud/mysql-mybatisplus/target/

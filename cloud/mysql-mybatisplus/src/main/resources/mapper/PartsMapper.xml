@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mysql.mybatis.plus.mapper.PartsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mysql.mybatis.plus.model.Parts">
+        <id column="id" property="id" />
+        <result column="app_id" property="appId" />
+        <result column="store_id" property="storeId" />
+        <result column="parts_no" property="partsNo" />
+        <result column="parts_name" property="partsName" />
+        <result column="parts_category_id" property="partsCategoryId" />
+        <result column="oe_no" property="oeNo" />
+        <result column="factory_no" property="factoryNo" />
+        <result column="bar_code" property="barCode" />
+        <result column="common_code" property="commonCode" />
+        <result column="unit" property="unit" />
+        <result column="spec" property="spec" />
+        <result column="part_model" property="partModel" />
+        <result column="brand" property="brand" />
+        <result column="birthplace" property="birthplace" />
+        <result column="apply_car_model" property="applyCarModel" />
+        <result column="cost_price" property="costPrice" />
+        <result column="vip_price" property="vipPrice" />
+        <result column="list_price" property="listPrice" />
+        <result column="low_price" property="lowPrice" />
+        <result column="price" property="price" />
+        <result column="price4s" property="price4s" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, app_id, store_id, parts_no, parts_name, parts_category_id, oe_no, factory_no, bar_code, common_code, unit, spec, part_model, brand, birthplace, apply_car_model, cost_price, vip_price, list_price, low_price, price, price4s, delete_flag, created_at, updated_at
+    </sql>
+
+</mapper>

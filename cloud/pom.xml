@@ -50,6 +50,7 @@
         <module>redis-jedis</module>
         <module>redis-redistemplate</module>
         <module>elasticsearch</module>
+        <module>mysql-mybatisplus</module>
     </modules>
 
     <properties>
@@ -142,6 +143,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.0.7.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

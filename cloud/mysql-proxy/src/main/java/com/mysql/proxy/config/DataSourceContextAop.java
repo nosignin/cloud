@@ -27,8 +27,9 @@ public class DataSourceContextAop {
             Method method = this.getMethod(pjp);
             DataSourceSelector dataSourceImport = method.getAnnotation(DataSourceSelector.class);
             clear = dataSourceImport.clear();
-            DataSourceContextHolder.set(dataSourceImport.value().getDataSourceName());
-            log.info("========数据源切换至：{}", dataSourceImport.value().getDataSourceName());
+            String dataSourceName = dataSourceImport.value().getDataSourceName();
+            DataSourceContextHolder.set(dataSourceName);
+            log.info("========数据源切换至：{}", dataSourceName);
             return pjp.proceed();
         } finally {
             if (clear) {
