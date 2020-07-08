@@ -5,7 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
 
 /**
+ * 利用spring提供的AbstractRoutingDataSource类的determineCurrentLookupKey方法获取数据源标识，达到切换数据源的目的
  * 参考：https://mp.weixin.qq.com/s/73_8_O5qMkn-gcJH2IZbJg
+ * 参考：https://www.cnblogs.com/liujiduo/p/5004691.html
 * @author 石佳
 * @since 2020/5/12
 */
