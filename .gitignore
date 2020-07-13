@@ -245,3 +245,5 @@ cloud/redis-redistemplate/target/
 cloud/elasticsearch/target/
 cloud/mysql-mybatisplus/target/
 cloud/dataway/target/
+cloud/dubbo-simple/dubbo-simple-consumer/target/
+cloud/dubbo-simple/dubbo-simple-provider/target/
