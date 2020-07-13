@@ -244,3 +244,4 @@ cloud/redis-jedis/target/
 cloud/redis-redistemplate/target/
 cloud/elasticsearch/target/
 cloud/mysql-mybatisplus/target/
+cloud/dataway/target/
