@@ -1,4 +1,4 @@
-package com.example.elasticjob.config;
+package com.example.elastic.job.config;
 
 import com.dangdang.ddframe.job.api.simple.SimpleJob;
 import com.dangdang.ddframe.job.config.JobCoreConfiguration;
@@ -8,8 +8,8 @@ import com.dangdang.ddframe.job.lite.api.listener.ElasticJobListener;
 import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
 import com.dangdang.ddframe.job.lite.spring.api.SpringJobScheduler;
 import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
-import com.example.elasticjob.job.SimpleJobDemo;
-import com.example.elasticjob.listen.MyElasticJobListener;
+import com.example.elastic.job.job.SimpleJobDemo;
+import com.example.elastic.job.listen.MyElasticJobListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

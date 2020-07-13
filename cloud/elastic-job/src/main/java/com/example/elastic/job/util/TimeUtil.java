@@ -1,4 +1,4 @@
-package com.example.elasticjob.util;
+package com.example.elastic.job.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

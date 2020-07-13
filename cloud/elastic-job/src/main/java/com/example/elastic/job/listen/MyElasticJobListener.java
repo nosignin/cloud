@@ -1,8 +1,8 @@
-package com.example.elasticjob.listen;
+package com.example.elastic.job.listen;
 
 import com.dangdang.ddframe.job.executor.ShardingContexts;
 import com.dangdang.ddframe.job.lite.api.listener.ElasticJobListener;
-import com.example.elasticjob.util.TimeUtil;
+import com.example.elastic.job.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

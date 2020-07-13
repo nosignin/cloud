@@ -22,10 +22,6 @@
 
     <modules>
         <module>../demo</module>
-        <module>../dubbo-api</module>
-        <module>../dubbo-consumer</module>
-        <module>../dubbo-provider</module>
-        <module>../elastic-job</module>
         <module>../eureka</module>
         <module>../rabbitmq</module>
         <module>../feign</module>
@@ -50,6 +46,7 @@
         <module>elasticsearch</module>
         <module>mysql-mybatisplus</module>
         <module>dataway</module>
+        <module>elastic-job</module>
     </modules>
 
     <properties>
