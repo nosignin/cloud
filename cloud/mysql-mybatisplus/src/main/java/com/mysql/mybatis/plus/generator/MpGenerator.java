@@ -10,12 +10,12 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 public class MpGenerator {
 
-    private String host = "";
-    private String username = "";
-    private String ppp = "";
-    private String database = "back";
+    private String host = "localhost";
+    private String username = "root";
+    private String password = "root";
+    private String database = "test1";
     private String author = "石佳";
-    private String outDir = "E:\\云\\Java";
+    private String outDir = "E:\\code\\generator\\Java";
 
     private void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {
         GlobalConfig config = new GlobalConfig();
@@ -24,7 +24,7 @@ public class MpGenerator {
         dataSourceConfig.setDbType(DbType.MYSQL)
                 .setUrl(dbUrl)
                 .setUsername(username)
-                .setPassword(ppp)
+                .setPassword(password)
                 .setDriverName("com.mysql.jdbc.Driver");
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig
@@ -55,7 +55,7 @@ public class MpGenerator {
 
     public static void main(String[] args) {
         String packageName = "com.mysql.mybatis.plus";
-        new MpGenerator().generateByTables(false, packageName, "mk_parts");
+        new MpGenerator().generateByTables(false, packageName, "user");
 
     }
 }
