@@ -2,7 +2,7 @@ package com.example.util.exceleasypoi.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.example.util.exceleasypoi.entity.CustomerList;
-import com.example.util.exceleasypoi.util.FileWithExcelUtil;
+import com.example.util.exceleasypoi.util.ExcelUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,7 @@ public class TestController {
     @PostMapping("/excel/import")
     @ApiOperation(value = "导入excel", notes = "具体描述")
     public List<CustomerList> importExcel(@RequestParam("file") MultipartFile file) {
-        List<CustomerList> personList = FileWithExcelUtil.importExcel(file, 1, CustomerList.class);
+        List<CustomerList> personList = ExcelUtil.importExcel(file, 1, CustomerList.class);
         log.info(">>> 解析到的用户数据是 {} <<<", JSON.toJSONString(personList));
         return personList;
     }
@@ -47,7 +47,7 @@ public class TestController {
                 customerList.setName("asdas"+i);
                 personList.add(customerList);
             }
-            FileWithExcelUtil.exportExcel(personList,CustomerList.class,"客户表.xls",response);
+            ExcelUtil.exportExcel(personList,CustomerList.class,"客户表.xls",response);
         } catch (Exception e) {
             log.info("getCustomerPage", e);
         }

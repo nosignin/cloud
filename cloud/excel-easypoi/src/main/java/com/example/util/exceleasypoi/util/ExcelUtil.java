@@ -18,7 +18,7 @@ import java.util.List;
  * @since 2020/08/06
  */
 @Slf4j
-public class FileWithExcelUtil {
+public class ExcelUtil {
     /**
     *  导入excel
     * @param file 文件
