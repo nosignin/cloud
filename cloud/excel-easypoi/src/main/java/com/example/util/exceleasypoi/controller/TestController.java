@@ -20,6 +20,7 @@ public class TestController {
 
     /**
      * 导入excel
+     * 地址在：http://localhost:8080/swagger-ui.html
      */
     @PostMapping("/import/excel")
     @ApiOperation(value = "导入excel", notes = "具体描述")
