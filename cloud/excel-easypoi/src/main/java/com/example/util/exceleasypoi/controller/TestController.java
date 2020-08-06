@@ -7,12 +7,10 @@ import com.example.util.exceleasypoi.util.ExcelUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,11 +48,7 @@ public class TestController {
         log.info(">>> 解析到的用户数据是 {} <<<", JSON.toJSONString(personList));
         // 对象强转
         List<Map<String,Object>> personListMap = new ArrayList<>();
-        personList.forEach(map -> {
-            Map<String,Object> map1 = new HashMap<>();
-            map1 = map;
-            personListMap.add(map1);
-        });
+        personList.forEach(personListMap::add);
         return personListMap;
     }
 
@@ -87,16 +81,16 @@ public class TestController {
     @GetMapping("/excel/export/dynamics")
     @ApiOperation(value = "动态导出excel", notes = "具体描述")
     public void exportExcelDynamics(HttpServletResponse response){
-        List<ExcelExportEntity> headList = new ArrayList<ExcelExportEntity>(); //表头列
+        List<ExcelExportEntity> headList = new ArrayList<>(); //表头列
         // 填充表头列
-        headList = fillingExcelHead(headList);
-        List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>(); //内容列
+        fillingExcelHead(headList);
+        List<Map<String, Object>> dataList = new ArrayList<>(); //内容列
         // 填充内容列
-        dataList = fillingExcelData(dataList);
+        fillingExcelData(dataList);
         ExcelUtil.exportExcelDynamics(headList,dataList,"动态excel.xls",response);
     }
 
-    private List<Map<String, Object>> fillingExcelData(List<Map<String, Object>> dataList) {
+    private void fillingExcelData(List<Map<String, Object>> dataList) {
         for(int j=0;j<3;j++){ // 3行数据
             Map<String, Object> stringObjectHashMap = new HashMap<>();
             for(int i=0;i<10;i++){
@@ -105,14 +99,12 @@ public class TestController {
             }
             dataList.add(stringObjectHashMap);
         }
-        return dataList;
     }
 
-    private List<ExcelExportEntity> fillingExcelHead(List<ExcelExportEntity> headList) {
+    private void fillingExcelHead(List<ExcelExportEntity> headList) {
         for(int i=0;i<10;i++){
             ExcelExportEntity excelExportEntity = new ExcelExportEntity(i+"级",i+"级");
             headList.add(excelExportEntity);
         }
-        return headList;
     }
 }
