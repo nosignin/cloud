@@ -249,3 +249,7 @@ cloud/dubbo-simple/dubbo-simple-consumer/target/
 cloud/dubbo-simple/dubbo-simple-provider/target/
 cloud/elastic-job/target/
 cloud/dubbo-simple/dubbo-simple-api/target/
+cloud/excel-easypoi/.mvn/
+cloud/excel-easypoi/HELP.md
+cloud/excel-easypoi/mvnw
+cloud/excel-easypoi/target/

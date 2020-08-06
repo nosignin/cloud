@@ -47,6 +47,7 @@
         <module>mysql-mybatisplus</module>
         <module>dataway</module>
         <module>elastic-job</module>
+        <module>excel-easypoi</module>
     </modules>
 
     <properties>
@@ -57,6 +58,18 @@
         <elasticsearch.version>7.2.0</elasticsearch.version>
         <fastjson.version>1.2.47</fastjson.version>
         <commons-lang3.version>3.7</commons-lang3.version>
+        <canal.version>1.0.25</canal.version>
+        <zkclient.version>0.11</zkclient.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <dubbo-spring-boot-starter.version>2.0.0</dubbo-spring-boot-starter.version>
+        <spring-cloud-alibaba.version>0.2.2.RELEASE</spring-cloud-alibaba.version>
+        <jedis.version>2.10.2</jedis.version>
+        <mybatis-plus-boot-starter.version>3.0.7.1</mybatis-plus-boot-starter.version>
+        <easypoi-base.version>3.0.3</easypoi-base.version>
+        <easypoi-web.version>3.0.3</easypoi-web.version>
+        <easypoi-annotation.version>3.0.3</easypoi-annotation.version>
+        <springfox-swagger-ui.version>2.2.2</springfox-swagger-ui.version>
+        <springfox-swagger2.version>2.2.2</springfox-swagger2.version>
     </properties>
 
     <dependencies>
@@ -84,34 +97,34 @@
             <dependency>
                 <groupId>com.alibaba.spring.boot</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>2.0.0</version>
+                <version>${dubbo-spring-boot-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
-                <version>3.4.6</version>
+                <version>${zookeeper.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.101tec</groupId>
                 <artifactId>zkclient</artifactId>
-                <version>0.11</version>
+                <version>${zkclient.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>0.2.2.RELEASE</version>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.otter</groupId>
                 <artifactId>canal.client</artifactId>
-                <version>1.0.25</version>
+                <version>${canal.version}</version>
             </dependency>
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
-                <version>2.10.2</version>
+                <version>${jedis.version}</version>
             </dependency>
             <!-- Java Low Level REST Client -->
             <dependency>
@@ -144,7 +157,33 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.0.7.1</version>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi-base</artifactId>
+                <version>${easypoi-base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi-web</artifactId>
+                <version>${easypoi-web.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi-annotation</artifactId>
+                <version>${easypoi-annotation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
