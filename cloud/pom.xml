@@ -21,20 +21,20 @@
     </parent>
 
     <modules>
-        <module>../demo</module>
-        <module>../eureka</module>
-        <module>../rabbitmq</module>
-        <module>../feign</module>
-        <module>../gateway</module>
-        <module>../ribbon</module>
-        <module>../springsecurity</module>
-        <module>../springsecurity-oauth2</module>
-        <module>../zipkin-a</module>
-        <module>../zipkin-b</module>
-        <module>../zuul-client</module>
-        <module>../zuul-server</module>
-        <module>../mine</module>
-        <module>../mine2</module>
+<!--        <module>../demo</module>-->
+<!--        <module>../eureka</module>-->
+<!--        <module>../rabbitmq</module>-->
+<!--        <module>../feign</module>-->
+<!--        <module>../gateway</module>-->
+<!--        <module>../ribbon</module>-->
+<!--        <module>../springsecurity</module>-->
+<!--        <module>../springsecurity-oauth2</module>-->
+<!--        <module>../zipkin-a</module>-->
+<!--        <module>../zipkin-b</module>-->
+<!--        <module>../zuul-client</module>-->
+<!--        <module>../zuul-server</module>-->
+<!--        <module>../mine</module>-->
+<!--        <module>../mine2</module>-->
         <module>nacos</module>
         <module>dubbo</module>
         <module>dubbo-simple</module>
