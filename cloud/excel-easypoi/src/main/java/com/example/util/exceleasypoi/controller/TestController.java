@@ -1,7 +1,5 @@
 package com.example.util.exceleasypoi.controller;
 
-import cn.afterturn.easypoi.excel.ExcelExportUtil;
-import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.params.ExcelExportEntity;
 import com.alibaba.fastjson.JSON;
 import com.example.util.exceleasypoi.entity.CustomerList;
@@ -9,11 +7,12 @@ import com.example.util.exceleasypoi.util.ExcelUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,13 +43,21 @@ public class TestController {
      * 针对表头是动态的情况的导入
      * 地址在：http://localhost:8080/swagger-ui.html
      */
-//    @PostMapping("/excel/import/dynamics")
-//    @ApiOperation(value = "动态导入excel", notes = "具体描述")
-//    public List<CustomerList> importExcelDynamics(@RequestParam("file") MultipartFile file) {
-//        List<CustomerList> personList = ExcelUtil.importExcelDynamics(file, 1, CustomerList.class);
-//        log.info(">>> 解析到的用户数据是 {} <<<", JSON.toJSONString(personList));
-//        return personList;
-//    }
+    @PostMapping("/excel/import/dynamics")
+    @ApiOperation(value = "动态导入excel", notes = "具体描述")
+    public List<Map<String,Object>> importExcelDynamics(@RequestParam("file") MultipartFile file) {
+        List<Map> personList = ExcelUtil.importExcel(file, 1, Map.class);
+        log.info(">>> 解析到的用户数据是 {} <<<", JSON.toJSONString(personList));
+        // 对象强转
+        List<Map<String,Object>> personListMap = new ArrayList<>();
+        personList.forEach(map -> {
+            Map<String,Object> map1 = new HashMap<>();
+            map1 = map;
+            personListMap.add(map1);
+        });
+        return personListMap;
+    }
+
 
     /**
      * 导出excel

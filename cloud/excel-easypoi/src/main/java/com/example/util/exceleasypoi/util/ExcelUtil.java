@@ -5,7 +5,6 @@ import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.ImportParams;
 import cn.afterturn.easypoi.excel.entity.params.ExcelExportEntity;
-import com.example.util.exceleasypoi.entity.CustomerList;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,7 +29,7 @@ public class ExcelUtil {
     * @author 石佳
     * @since 2020/8/6
     */
-    public static <T> List<T> importExcel(MultipartFile file,  int headerRows, Class<T> pojoClass) {
+    public static <T> List<T> importExcel(MultipartFile file, int headerRows, Class<T> pojoClass) {
         if(file==null){
             return null;
         }
@@ -91,13 +90,4 @@ public class ExcelUtil {
         if (workbook != null);
         downLoadExcel(fileName, response, workbook);
     }
-
-    /**
-    *  动态导入工时
-    * @param [file, i, customerListClass]
-    * @author 石佳
-    * @since 2020/8/6
-    */
-//    public static List<CustomerList> importExcelDynamics(MultipartFile file, int i, Class<CustomerList> customerListClass) {
-//    }
 }
