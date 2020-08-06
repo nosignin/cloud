@@ -4,6 +4,8 @@ import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.ImportParams;
+import cn.afterturn.easypoi.excel.entity.params.ExcelExportEntity;
+import com.example.util.exceleasypoi.entity.CustomerList;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 石佳
@@ -75,4 +78,26 @@ public class ExcelUtil {
             log.error("[monitor][IO][表单功能]", e);
         }
     }
+
+    /**
+    *  动态导出excel
+    * @param headList 表头列
+    * @param dataList 内容列
+    * @author 石佳
+    * @since 2020/8/6
+    */
+    public static void exportExcelDynamics(List<ExcelExportEntity> headList, List<Map<String, Object>> dataList,String fileName,HttpServletResponse response) {
+        Workbook workbook = ExcelExportUtil.exportExcel(new ExportParams(), headList,dataList);
+        if (workbook != null);
+        downLoadExcel(fileName, response, workbook);
+    }
+
+    /**
+    *  动态导入工时
+    * @param [file, i, customerListClass]
+    * @author 石佳
+    * @since 2020/8/6
+    */
+//    public static List<CustomerList> importExcelDynamics(MultipartFile file, int i, Class<CustomerList> customerListClass) {
+//    }
 }
