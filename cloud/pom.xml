@@ -34,6 +34,7 @@
         <module>elastic-job</module>
         <module>excel-easypoi</module>
         <module>springcloud</module>
+        <module>rabbitmq</module>
     </modules>
 
     <properties>
@@ -54,8 +55,7 @@
         <easypoi-base.version>3.0.3</easypoi-base.version>
         <easypoi-web.version>3.0.3</easypoi-web.version>
         <easypoi-annotation.version>3.0.3</easypoi-annotation.version>
-        <springfox-swagger-ui.version>2.2.2</springfox-swagger-ui.version>
-        <springfox-swagger2.version>2.2.2</springfox-swagger2.version>
+        <swagger.version>2.2.2</swagger.version>
     </properties>
 
     <dependencies>
@@ -164,12 +164,17 @@
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
-                <version>${springfox-swagger-ui.version}</version>
+                <version>${swagger.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
-                <version>${springfox-swagger2.version}</version>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-core</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

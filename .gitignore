@@ -257,4 +257,4 @@ cloud/springcloud/eureka/target/
 eureka/.mvn/
 eureka1/.mvn/
 eureka1/target/
-*/target/
+cloud/rabbitmq/target/

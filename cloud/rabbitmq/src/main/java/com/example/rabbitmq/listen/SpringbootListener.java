@@ -23,7 +23,6 @@ public class SpringbootListener {
 
     /**
      * 申明队列
-     * @return
      */
     @Bean
     Queue queue(){
@@ -32,7 +31,6 @@ public class SpringbootListener {
 
     /**
      * 申明交换机
-     * @return
      */
     @Bean
     TopicExchange exchange(){
@@ -41,9 +39,6 @@ public class SpringbootListener {
 
     /**
      * 将交换机与队列绑定
-     * @param queue
-     * @param exchange
-     * @return
      */
     @Bean
     Binding binding(Queue queue,TopicExchange exchange){
@@ -54,7 +49,6 @@ public class SpringbootListener {
      * 申明处理消息的适配器,指明用哪个方法处理接收消息,
      * 这里指明了用Receiver的receiveMessage()方法接收消息
      * @param receiver 这是自己注入的对象,里面有一个receiveMessage方法
-     * @return
      */
     @Bean
     MessageListenerAdapter listenerAdapter(Receiver receiver){
@@ -64,9 +58,6 @@ public class SpringbootListener {
     /**
      * 申明一个Listener容器
      * 需要设置连接消息,指明监听哪个queue,受到消息的处理方法
-     * @param connectionFactory
-     * @param listenerAdapter
-     * @return
      */
     @Bean
     SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
