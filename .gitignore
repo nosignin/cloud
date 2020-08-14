@@ -253,3 +253,8 @@ cloud/excel-easypoi/.mvn/
 cloud/excel-easypoi/HELP.md
 cloud/excel-easypoi/mvnw
 cloud/excel-easypoi/target/
+cloud/springcloud/eureka/target/
+eureka/.mvn/
+eureka1/.mvn/
+eureka1/target/
+*/target/
