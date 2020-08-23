@@ -258,3 +258,4 @@ eureka/.mvn/
 eureka1/.mvn/
 eureka1/target/
 cloud/rabbitmq/target/
+.idea/
